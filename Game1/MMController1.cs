@@ -6,18 +6,21 @@ using UnityEngine.UI;
 
 public class MMController1 : MonoBehaviour
 {
-    [SerializeField] Button playBtn;
-    [SerializeField] Button quitBtn;
+    /*[SerializeField] Button playBtn;
+    [SerializeField] Button quitBtn;*/
     // Start is called before the first frame update
     void Start()
     {
-        playBtn.onClick.AddListener(() =>
-        {
-            SceneManager.LoadScene("Game1");
-        });
-        playBtn.onClick.AddListener(() =>
-        {
-            Application.Quit();
-        });
+      
+    }
+
+    public void PlayeBtn()
+    {
+        SceneManager.LoadScene("Game1");
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

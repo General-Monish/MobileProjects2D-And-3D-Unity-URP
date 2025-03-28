@@ -10,8 +10,9 @@ public class GM2 : MonoBehaviour
 
     [HideInInspector]
     public bool isGameStarted = false;
-    int lives = 2;
+    int lives = 3;
     int score = 0;
+    int gamePlayed=1;
     Vector3 cameraPos;
 
     [SerializeField] GameObject player;
@@ -27,6 +28,12 @@ public class GM2 : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        StartCoroutine(DisplayBannerAds());
+    }
+    IEnumerator DisplayBannerAds()
+    {
+        yield return new WaitForSeconds(5);
+        AdsManager.instance.bannerAds.ShowBannerAd();
     }
 
     private void Start()
@@ -49,11 +56,20 @@ public class GM2 : MonoBehaviour
     {
         player.SetActive(false);
         Invoke("ReloadLevel", 1f);
+        AdsManager.instance.bannerAds.HideBannerAd();
+
+        if(gamePlayed % 3 == 0)
+        {
+            AdsManager.instance.interstetialAds.ShowInterstetialAd();
+        }
     }
 
     public void ReloadLevel()
     {
         SceneManager.LoadScene("Game3");
+        gamePlayed++;
+        Debug.Log(gamePlayed.ToString());
+        AdsManager.instance.bannerAds.ShowBannerAd();
     }
 
     public void UpdateLives()

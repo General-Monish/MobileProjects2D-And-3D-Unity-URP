@@ -26,6 +26,7 @@ public class ObstacleSpawner2 : MonoBehaviour
         while (true)
         {
             Spawn();
+            GM2.instance.UpdateScore();
             yield return new WaitForSeconds(spawnRate);
         }
     }

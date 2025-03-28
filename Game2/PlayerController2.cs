@@ -55,4 +55,6 @@ public class PlayerController2 : MonoBehaviour
             SceneManager.LoadScene("Game2");
         }
     }
+
+ 
 }
